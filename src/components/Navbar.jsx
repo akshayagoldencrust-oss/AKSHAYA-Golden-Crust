@@ -45,20 +45,17 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-2 lg:gap-3 group">
           <img
-            src="/Akshaya Golden Crust _ LOGO _ Png.png"
-            alt="Akshaya Golden Crust Logo"
+            src="/fevicon.png"
+            alt="Akshaya Golden Crust Icon"
             className="h-10 lg:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="flex flex-col">
-            <span className="font-heading font-semibold text-lg lg:text-xl tracking-wider text-brand-gold group-hover:text-brand-gold-light transition-colors">
-              AKSHAYA
-            </span>
-            <span className="text-[10px] tracking-[0.25em] text-white/80 font-subheading -mt-1 uppercase">
-              Golden Crust
-            </span>
-          </div>
+          <img
+            src="/Akshaya Golden Crust _ LOGO _ Png - Copy.png"
+            alt="Akshaya Golden Crust Text Logo"
+            className="h-8 lg:h-10 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+          />
         </Link>
 
         {/* Desktop Menu */}

@@ -121,18 +121,15 @@ export default function Footer() {
         <div className="flex flex-col gap-6">
           <Link to="/" className="flex items-center gap-3 self-start">
             <img
-              src="/Akshaya Golden Crust _ LOGO _ Png.png"
-              alt="Akshaya Golden Crust"
+              src="/fevicon.png"
+              alt="Akshaya Golden Crust Icon"
               className="h-12 w-auto object-contain"
             />
-            <div className="flex flex-col">
-              <span className="font-heading font-semibold text-lg lg:text-xl tracking-wider text-brand-gold">
-                AKSHAYA
-              </span>
-              <span className="text-[10px] tracking-[0.25em] text-white/80 font-subheading -mt-1 uppercase">
-                Golden Crust
-              </span>
-            </div>
+            <img
+              src="/Akshaya Golden Crust _ LOGO _ Png - Copy.png"
+              alt="Akshaya Golden Crust Text"
+              className="h-10 w-auto object-contain"
+            />
           </Link>
           <p className="text-sm leading-relaxed text-white/60">
             Connecting global markets with premium quality cooking oils, grains, and raw minerals.
