@@ -39,7 +39,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-luxury glassmorphism-navy bg-brand-navy/95 shadow-xl border-b border-white/5 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-luxury glassmorphism-navy bg-brand-navy-light/95 shadow-xl border-b border-white/5 ${
         isScrolled ? 'py-4' : 'py-5'
       }`}
     >
