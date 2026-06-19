@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-heading: 'AvantGarde Bk BT', 'Outfit', 'Barlow', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-subheading: 'Barlow', system-ui, sans-serif;
+  --font-body: 'MS Reference Sans', 'Inter', system-ui, sans-serif;
+
+  --color-brand-navy: #162A3F;
+  --color-brand-navy-light: #1F3E5C;
+  --color-brand-gold: #CFAD6C;
+  --color-brand-gold-dark: #B59453;
+  --color-brand-gold-light: #DFCA9B;
+}
+
+/* Custom base resets and utilities */
+@layer base {
+  body {
+    font-family: var(--font-body);
+    background-color: #FFFFFF;
+    color: #162A3F;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #162A3F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CFAD6C;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B59453;
+}
+
+/* Glassmorphism effects */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glassmorphism-navy {
+  background: rgba(22, 42, 63, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glassmorphism-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(22, 42, 63, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(22, 42, 63, 0.1);
+}
+
+.glassmorphism-card-dark {
+  background: rgba(22, 42, 63, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(207, 173, 108, 0.2);
+  box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.3);
+}
+
+/* Button shine effect */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 30%;
+  height: 200%;
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: rotate(25deg);
+  transition: none;
+}
+
+.btn-shine:hover::after {
+  left: 130%;
+  transition: all 0.9s ease-in-out;
+}
+
+/* Custom transitions and animations */
+.transition-luxury {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hide default Vite/React root constraints */
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  border: none !important;
+  min-height: 100vh;
+}
