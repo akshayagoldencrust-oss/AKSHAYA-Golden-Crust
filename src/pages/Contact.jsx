@@ -368,38 +368,85 @@ export default function Contact() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-brand-navy/80 backdrop-blur-md z-50 flex items-center justify-center p-6"
           >
+            {/* Background glowing orb */}
+            <motion.div 
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="absolute w-96 h-96 bg-brand-gold/20 rounded-full blur-[100px] pointer-events-none"
+            />
+            
             <motion.div
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              className="bg-white rounded-3xl p-8 md:p-12 max-w-lg w-full border border-brand-gold/30 shadow-2xl relative text-center"
+              initial={{ scale: 0.8, y: 30, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.8, y: 30, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="bg-white rounded-[2rem] p-8 md:p-12 max-w-md w-full shadow-[0_20px_60px_-15px_rgba(207,173,108,0.3)] relative text-center overflow-hidden border border-brand-gold/10"
             >
+              {/* Decorative top gradient */}
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-50" />
+
               <button
                 onClick={() => setIsSubmitted(false)}
-                className="absolute top-6 right-6 text-brand-navy/40 hover:text-brand-navy transition-colors"
+                className="absolute top-6 right-6 text-brand-navy/30 hover:text-brand-navy hover:rotate-90 transition-all duration-300"
                 aria-label="Close success popup"
               >
                 <X className="h-6 w-6" />
               </button>
 
-              <div className="w-16 h-16 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mx-auto mb-6">
-                <ShieldCheck className="h-10 w-10" />
-              </div>
-
-              <h3 className="font-heading font-bold text-2xl text-brand-navy mb-3">
-                Inquiry Sent Successfully
-              </h3>
-              
-              <p className="text-xs md:text-sm text-brand-navy/60 leading-relaxed font-body mb-8">
-                Thank you for contacting Akshaya Golden Crust. Your inquiry has been routed to our bulk trading desk. A portfolio manager will review the requirements and contact you within 12 hours.
-              </p>
-
-              <button
-                onClick={() => setIsSubmitted(false)}
-                className="w-full py-3.5 rounded-xl bg-brand-navy text-white hover:bg-brand-navy-light font-subheading text-xs font-bold uppercase tracking-wider transition-colors"
+              {/* Animated Checkmark Icon */}
+              <motion.div 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.1 }}
+                className="w-24 h-24 rounded-full bg-brand-gold/5 flex items-center justify-center mx-auto mb-8 relative"
               >
-                Return to Trade Desk
-              </button>
+                {/* Pulsing ring */}
+                <motion.div 
+                  initial={{ scale: 1, opacity: 0.8 }}
+                  animate={{ scale: 1.4, opacity: 0 }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "easeOut" }}
+                  className="absolute inset-0 rounded-full border border-brand-gold"
+                />
+                
+                <motion.svg
+                  className="w-12 h-12 text-brand-gold-dark"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <motion.path
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </motion.svg>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <h3 className="font-heading font-bold text-3xl text-brand-navy mb-4">
+                  Request Received
+                </h3>
+                
+                <p className="text-sm text-brand-navy/60 leading-relaxed font-body mb-10">
+                  Thank you for choosing Akshaya Golden Crust. Your inquiry has been securely routed to our trading desk. A dedicated portfolio manager will reach out to you shortly.
+                </p>
+
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="w-full py-4 rounded-xl bg-brand-navy text-white hover:bg-brand-gold font-subheading text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 shadow-lg hover:shadow-brand-gold/30 transform hover:-translate-y-1"
+                >
+                  Return to Dashboard
+                </button>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
