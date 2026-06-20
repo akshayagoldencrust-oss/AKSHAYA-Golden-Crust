@@ -9,8 +9,13 @@ export default async function handler(req, res) {
   const { "Full Name": name, "Email Address": email, "Contact Number": phone, "Company Name": company, "Inquiry Details": message } = req.body;
 
   // We are using the app password provided by the user.
-  // We check for process.env.GMAIL_APP_PASSWORD first so they can move it to env later for security.
-  const password = process.env.GMAIL_APP_PASSWORD || "jrst zupy sllf rxbe";
+  // We rely exclusively on Vercel Environment Variables for security.
+  const password = process.env.GMAIL_APP_PASSWORD;
+
+  if (!password) {
+    console.error('CRITICAL: Missing GMAIL_APP_PASSWORD environment variable');
+    return res.status(500).json({ error: 'Server misconfiguration: Email credentials not found' });
+  }
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
