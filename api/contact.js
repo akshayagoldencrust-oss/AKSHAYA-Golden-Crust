@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
   // We are using the app password provided by the user.
   // We rely exclusively on Vercel Environment Variables for security.
-  const password = process.env.GMAIL_APP_PASSWORD;
+  const password = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '');
 
   if (!password) {
     console.error('CRITICAL: Missing GMAIL_APP_PASSWORD environment variable');
