@@ -705,10 +705,10 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center max-w-4xl mx-auto">
             {[
-              { label: "GST Registered", code: "37ACNFA9200B1ZO", tag: "GST" },
-              { label: "Import Export Registry", code: "ACNFA9200B", tag: "IEC" },
-              { label: "Food Safety Standards Authority", code: "10126004000164", tag: "FSSAI" },
-              { label: "Firm Reg. Certificate", code: "Reg No. 54/2026", tag: "REGISTRY" },
+              { label: "GST Registered", code: "37ACNFA9200B1ZO", logo: "/gst-logo.png" },
+              { label: "Import Export Registry", code: "ACNFA9200B", logo: "/iec-logo.png" },
+              { label: "Food Safety Standards Authority", code: "10126004000164", logo: "/fssai-logo.png" },
+              { label: "Firm Reg. Certificate", code: "Reg No. 54/2026", logo: "/registry-logo.png" },
             ].map((badge, idx) => (
               <motion.div
                 key={idx}
@@ -718,8 +718,8 @@ export default function Home() {
                 transition={{ delay: idx * 0.1 }}
                 className="p-6 rounded-2xl border border-brand-navy/5 bg-slate-50 flex flex-col items-center group hover:border-brand-gold/30 hover:bg-white transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-full bg-brand-gold/10 text-brand-gold-dark font-bold font-heading text-sm flex items-center justify-center mb-4 group-hover:bg-brand-gold group-hover:text-brand-navy transition-colors">
-                  {badge.tag}
+                <div className="h-16 w-full flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
+                  <img src={badge.logo} alt={badge.label} className="max-h-full max-w-[80%] object-contain mix-blend-multiply" />
                 </div>
                 <h4 className="font-heading font-semibold text-brand-navy text-xs uppercase tracking-wider mb-2">
                   {badge.label}
