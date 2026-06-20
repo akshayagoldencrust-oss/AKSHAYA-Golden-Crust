@@ -786,27 +786,33 @@ export default function Home() {
             <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-gray-100 relative">
               <div className="absolute top-0 right-10 w-20 h-1 bg-brand-gold rounded-b-full"></div>
               
-              <form className="flex flex-col gap-5 mt-2" onSubmit={(e) => e.preventDefault()}>
+              <form action="https://formsubmit.co/akshayagoldencrust@gmail.com" method="POST" className="flex flex-col gap-5 mt-2">
+                {/* FormSubmit Config */}
+                <input type="hidden" name="_subject" value="New Bulk Quote Request from Website!" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value="https://www.akshayagoldencrust.com/" />
+                <input type="hidden" name="_captcha" value="false" />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] font-bold text-brand-navy uppercase tracking-wider pl-2">Full Name</label>
-                    <input type="text" placeholder="e.g. John Doe" className="w-full bg-[#FDFBF7] border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-navy placeholder:text-gray-400" />
+                    <input type="text" name="name" required placeholder="e.g. John Doe" className="w-full bg-[#FDFBF7] border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-navy placeholder:text-gray-400" />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] font-bold text-brand-navy uppercase tracking-wider pl-2">Company Name</label>
-                    <input type="text" placeholder="e.g. EuroFoods Ltd." className="w-full bg-[#FDFBF7] border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-navy placeholder:text-gray-400" />
+                    <input type="text" name="company" placeholder="e.g. EuroFoods Ltd." className="w-full bg-[#FDFBF7] border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-navy placeholder:text-gray-400" />
                   </div>
                 </div>
                 
                 <div className="flex flex-col gap-2">
                   <label className="text-[10px] font-bold text-brand-navy uppercase tracking-wider pl-2">Email Address</label>
-                  <input type="email" placeholder="john@eurofoods.com" className="w-full bg-[#FDFBF7] border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-navy placeholder:text-gray-400" />
+                  <input type="email" name="email" required placeholder="john@eurofoods.com" className="w-full bg-[#FDFBF7] border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-navy placeholder:text-gray-400" />
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] font-bold text-brand-navy uppercase tracking-wider pl-2">Product of Interest</label>
-                    <select className="w-full bg-[#FDFBF7] border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-navy appearance-none cursor-pointer">
+                    <select name="product" className="w-full bg-[#FDFBF7] border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-navy appearance-none cursor-pointer">
                       <option>Refined Sunflower Oil</option>
                       <option>Premium Basmati Rice</option>
                       <option>Dry Red Chillies</option>
@@ -816,7 +822,7 @@ export default function Home() {
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] font-bold text-brand-navy uppercase tracking-wider pl-2">Estimated Quantity</label>
-                    <input type="text" placeholder="e.g. 20 MT or 2 FCL" className="w-full bg-[#FDFBF7] border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-navy placeholder:text-gray-400" />
+                    <input type="text" name="quantity" required placeholder="e.g. 20 MT or 2 FCL" className="w-full bg-[#FDFBF7] border border-gray-200 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-navy placeholder:text-gray-400" />
                   </div>
                 </div>
                 

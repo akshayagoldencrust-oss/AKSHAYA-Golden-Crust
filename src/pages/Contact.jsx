@@ -38,22 +38,31 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: ''
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/akshayagoldencrust@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
-    }, 1500);
+      
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      } else {
+        console.error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
