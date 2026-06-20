@@ -43,13 +43,23 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
+      const payload = {
+        "Full Name": formData.name,
+        "Email Address": formData.email,
+        "Contact Number": formData.phone,
+        "Company Name": formData.company || "Not provided",
+        "Inquiry Details": formData.message,
+        "_subject": `New Trade Inquiry from ${formData.name} - Akshaya Golden Crust`,
+        "_template": "box"
+      };
+
       const response = await fetch("https://formsubmit.co/ajax/akshayagoldencrust@gmail.com", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(payload)
       });
       
       if (response.ok) {
