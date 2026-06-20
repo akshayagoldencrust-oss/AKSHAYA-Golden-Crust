@@ -86,6 +86,40 @@ const tickerItems = [
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.target);
+    const payload = {
+      "Full Name": formData.get("Full Name"),
+      "Company Name": formData.get("Company Name"),
+      "Email Address": formData.get("Email Address"),
+      "Product of Interest": formData.get("Product of Interest"),
+      "Estimated Quantity": formData.get("Estimated Quantity"),
+      "Inquiry Details": `Product of Interest: ${formData.get("Product of Interest")}\nEstimated Quantity: ${formData.get("Estimated Quantity")}`
+    };
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (response.ok) {
+        setIsSubmitted(true);
+        e.target.reset();
+        setTimeout(() => setIsSubmitted(false), 5000);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   // Auto Hero Slideshow
   useEffect(() => {
@@ -786,13 +820,7 @@ export default function Home() {
             <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-gray-100 relative">
               <div className="absolute top-0 right-10 w-20 h-1 bg-brand-gold rounded-b-full"></div>
               
-              <form action="https://formsubmit.co/akshayagoldencrust@gmail.com" method="POST" className="flex flex-col gap-5 mt-2">
-                {/* FormSubmit Config */}
-                <input type="hidden" name="_subject" value="New Bulk Quote Request from Website!" />
-                <input type="hidden" name="_template" value="box" />
-                <input type="hidden" name="_next" value="https://www.akshayagoldencrust.com/" />
-                <input type="hidden" name="_captcha" value="false" />
-
+              <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 mt-2">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] font-bold text-brand-navy uppercase tracking-wider pl-2">Full Name</label>
@@ -827,8 +855,8 @@ export default function Home() {
                 </div>
                 
                 <div className="mt-4">
-                  <button type="submit" className="w-full py-4 rounded-2xl bg-[#0B2519] text-white font-subheading text-xs font-bold uppercase tracking-widest hover:bg-[#113826] transition-colors shadow-lg hover:shadow-xl shadow-[#0B2519]/20 transform hover:-translate-y-0.5 duration-300">
-                    Request Custom Pricing
+                  <button type="submit" disabled={isSubmitting} className="w-full py-4 rounded-2xl bg-[#0B2519] text-white font-subheading text-xs font-bold uppercase tracking-widest hover:bg-[#113826] transition-colors shadow-lg hover:shadow-xl shadow-[#0B2519]/20 transform hover:-translate-y-0.5 duration-300 disabled:opacity-70 disabled:hover:translate-y-0">
+                    {isSubmitting ? "Sending..." : isSubmitted ? "Request Sent Successfully!" : "Request Custom Pricing"}
                   </button>
                   <p className="text-[9px] text-gray-500 text-center mt-4 font-body uppercase tracking-wider flex items-center justify-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5" />

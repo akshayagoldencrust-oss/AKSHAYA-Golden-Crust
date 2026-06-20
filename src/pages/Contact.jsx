@@ -53,7 +53,7 @@ export default function Contact() {
         "_template": "box"
       };
 
-      const response = await fetch("https://formsubmit.co/ajax/akshayagoldencrust@gmail.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
